@@ -25,13 +25,13 @@ public class QuizActivity extends AppCompatActivity {
                 // Creating the correct toast Toast object
                 Toast correctToast = new Toast(QuizActivity.this);
 
+                // Setting the Gravity to Top for Challenge One
+                correctToast.setGravity(Gravity.TOP, 0, 0);
+
                 //setting message for correct toast
                 correctToast.makeText(QuizActivity.this,
                         R.string.correct_toast,
                         Toast.LENGTH_SHORT).show();
-
-                // Setting the Gravity to Top for Challenge One
-                correctToast.setGravity(Gravity.TOP, 0, 0);
 
             }
         });
@@ -44,13 +44,13 @@ public class QuizActivity extends AppCompatActivity {
                 // Creating the incorrect toast Toast object
                 Toast incorrectToast = new Toast(QuizActivity.this);
 
+                // Setting the Gravity to Top for Challenge One
+                incorrectToast.setGravity(Gravity.TOP, 0, 0);
+
                 // Setting the message for incorrect toast
                 incorrectToast.makeText(QuizActivity.this,
                         R.string.incorrect_toast,
                         Toast.LENGTH_SHORT).show();
-
-                // Setting the Gravity to Top for Challenge One
-                incorrectToast.setGravity(Gravity.TOP, 0, 0);
             }
         });
 
