@@ -23,15 +23,13 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Creating the correct toast Toast object
-                Toast correctToast = new Toast(QuizActivity.this);
+                Toast correctToast = Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_SHORT);
 
                 // Setting the Gravity to Top for Challenge One
                 correctToast.setGravity(Gravity.TOP, 0, 0);
 
                 //setting message for correct toast
-                correctToast.makeText(QuizActivity.this,
-                        R.string.correct_toast,
-                        Toast.LENGTH_SHORT).show();
+                correctToast.show();
 
             }
         });
@@ -41,16 +39,14 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Creating the incorrect toast Toast object
-                Toast incorrectToast = new Toast(QuizActivity.this);
+                // Creating the correct toast Toast object
+                Toast incorrectToast = Toast.makeText(QuizActivity.this, R.string.incorrect_toast, Toast.LENGTH_SHORT);
 
                 // Setting the Gravity to Top for Challenge One
                 incorrectToast.setGravity(Gravity.TOP, 0, 0);
 
-                // Setting the message for incorrect toast
-                incorrectToast.makeText(QuizActivity.this,
-                        R.string.incorrect_toast,
-                        Toast.LENGTH_SHORT).show();
+                //setting message for incorrect toast
+                incorrectToast.show();
             }
         });
 
