@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,7 +12,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private ImageButton mNextButton;
+    private ImageButton mPrevButton;
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[]{
@@ -32,6 +34,13 @@ public class QuizActivity extends AppCompatActivity {
 
         // Set the text for the question from the question bank
         mQuestionTextView = findViewById(R.id.question_text_view);
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
 
         // Create the true button
         mTrueButton = findViewById(R.id.true_button);
@@ -64,9 +73,25 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        // Create the previous button to go back a question
+        mPrevButton = findViewById(R.id.previous_button);
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mCurrentIndex <= 0)
+                    mCurrentIndex = mQuestionBank.length-1;
+                else
+                    mCurrentIndex = mCurrentIndex - 1;
+
+                updateQuestion();
+            }
+        });
+
         updateQuestion();
 
     }
+
+
 
     private void updateQuestion(){
         int question = mQuestionBank[mCurrentIndex].getTextResId();
