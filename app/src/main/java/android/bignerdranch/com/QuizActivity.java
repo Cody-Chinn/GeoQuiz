@@ -32,6 +32,13 @@ public class QuizActivity extends AppCompatActivity {
 
         // Set the text for the question from the question bank
         mQuestionTextView = findViewById(R.id.question_text_view);
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
 
         // Create the true button
         mTrueButton = findViewById(R.id.true_button);
