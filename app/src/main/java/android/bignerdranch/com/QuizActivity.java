@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizActivity";
@@ -29,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     };
 
     private int mCurrentIndex = 0;
+    int mScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
                 // Check for correct answer
                 checkAnswer(true);
                 mQuestionBank[mCurrentIndex].setAnswered(true);
+                checkGrade();
                 checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
@@ -69,6 +73,7 @@ public class QuizActivity extends AppCompatActivity {
                 // Check for correct answer
                 checkAnswer(false);
                 mQuestionBank[mCurrentIndex].setAnswered(true);
+                checkGrade();
                 checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
@@ -151,6 +156,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (userPressedTrue == answerIsTrue){
             messageResId = R.string.correct_toast;
+            mScore += 1;
         } else {
             messageResId = R.string.incorrect_toast;
         }
@@ -165,6 +171,25 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             mTrueButton.setEnabled(true);
             mFalseButton.setEnabled(true);
+        }
+    }
+
+    private void checkGrade(){
+
+        int counter = 0;
+        double grade;
+        DecimalFormat df = new DecimalFormat("###.##");
+
+        for(int i=0; i<mQuestionBank.length; i++){
+            if(mQuestionBank[i].isAnswered()){
+                counter ++;
+            }
+        }
+
+        if(counter == mQuestionBank.length){
+            grade = ((double) mScore/(double) mQuestionBank.length)*100;
+            df.format(grade);
+            Toast.makeText(this, "You've scored " + df.format(grade) + "%", Toast.LENGTH_LONG).show();
         }
     }
 }
