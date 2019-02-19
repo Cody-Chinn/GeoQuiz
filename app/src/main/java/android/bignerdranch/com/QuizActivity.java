@@ -20,12 +20,12 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[]{
-            new Question(R.string.question_australia, true),
-            new Question(R.string.question_oceans, true),
-            new Question(R.string.question_mideast, false),
-            new Question(R.string.question_africa, false),
-            new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true)
+            new Question(R.string.question_australia, true, false),
+            new Question(R.string.question_oceans, true, false),
+            new Question(R.string.question_mideast, false, false),
+            new Question(R.string.question_africa, false, false),
+            new Question(R.string.question_americas, true, false),
+            new Question(R.string.question_asia, true, false)
     };
 
     private int mCurrentIndex = 0;
@@ -56,6 +56,8 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Check for correct answer
                 checkAnswer(true);
+                mQuestionBank[mCurrentIndex].setAnswered(true);
+                checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
 
@@ -66,6 +68,8 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Check for correct answer
                 checkAnswer(false);
+                mQuestionBank[mCurrentIndex].setAnswered(true);
+                checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
 
@@ -77,6 +81,7 @@ public class QuizActivity extends AppCompatActivity {
                 // Iterate through question bank
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
+                checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
 
@@ -89,13 +94,12 @@ public class QuizActivity extends AppCompatActivity {
                     mCurrentIndex = mQuestionBank.length-1;
                 else
                     mCurrentIndex = mCurrentIndex - 1;
-
                 updateQuestion();
+                checkAnswered(mQuestionBank[mCurrentIndex]);
             }
         });
 
         updateQuestion();
-
     }
 
     @Override
@@ -141,6 +145,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(boolean userPressedTrue) {
+        mQuestionBank[mCurrentIndex].setAnswered(true);
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         int messageResId = 0;
 
@@ -151,5 +156,15 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
+
+    private void checkAnswered(Question question){
+        if(question.isAnswered()){
+            mTrueButton.setEnabled(false);
+            mFalseButton.setEnabled(false);
+        } else {
+            mTrueButton.setEnabled(true);
+            mFalseButton.setEnabled(true);
+        }
     }
 }
