@@ -15,6 +15,10 @@
     <string name="next_button">Next</string>
     <string name="prev_button">Prev</string>
 
+    <!-- Content descriptors for image buttons-->
+    <string name="next_image_button">Next Question</string>
+    <string name="prev_image_button">Previous Question</string>
+
     <!-- Toast messages for answers-->
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
