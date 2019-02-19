@@ -60,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Iterate through question bank
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                updateQuestion();
             }
         });
 
