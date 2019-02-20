@@ -18,6 +18,8 @@ public class QuizActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private TextView mQuestionTextView;
+    private Button mCheatButton;
+
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
@@ -91,6 +93,14 @@ public class QuizActivity extends AppCompatActivity {
                     mCurrentIndex = mCurrentIndex - 1;
 
                 updateQuestion();
+            }
+        });
+
+        mCheatButton = findViewById(R.id.cheat_button);
+        mCheatButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                // Start Cheat Activity
             }
         });
 
