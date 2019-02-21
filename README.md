@@ -6,3 +6,7 @@ letting you know if you are correct or incorrect, then gives a score at the end.
 
 # Layout
 Each branch is a different challenge from the textbook
+
+# Sample of the running app
+(up to chapter 5 of Android Programming book, not yet finished)
+![](README sample.gif)
