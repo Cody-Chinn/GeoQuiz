@@ -10,4 +10,4 @@ Each branch is a different challenge from the textbook
 # Sample of the running app
 (up to chapter 5 of Android Programming book, not yet finished)
 
-![Sample gif of GeoQuiz running](<img src="https://github.com/Cody-Chinn/GeoQuiz/blob/master/README%20sample.gif" width="200" height="400 />)
+![Sample gif of GeoQuiz running](https://github.com/Cody-Chinn/GeoQuiz/blob/master/README%20sample.gif width="200" height="400)
