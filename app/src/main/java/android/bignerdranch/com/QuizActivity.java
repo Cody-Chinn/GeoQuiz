@@ -136,6 +136,7 @@ public class QuizActivity extends AppCompatActivity {
                 return;
             } else {
                 mIsCheater = CheatActivity.wasAnswerShown(data);
+                mQuestionBank[mCurrentIndex].setCheated(true);
             }
         }
     }
@@ -187,7 +188,7 @@ public class QuizActivity extends AppCompatActivity {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         int messageResId = 0;
 
-        if(mIsCheater){
+        if(mQuestionBank[mCurrentIndex].isCheated()){
             messageResId = R.string.judgement_toast;
         } else {
 
